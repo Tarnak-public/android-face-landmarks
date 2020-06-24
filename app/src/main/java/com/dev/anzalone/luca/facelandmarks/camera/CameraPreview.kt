@@ -32,7 +32,7 @@ import kotlin.math.absoluteValue
 class CameraPreview(context: Context, attrs: AttributeSet) : SurfaceView(context, attrs), SurfaceHolder.Callback {
     private var camera: Camera? = null //TODO: ADD PRIVATE
     private var running = false
-    private var facing  = CameraUtils.front
+    private var facing  = CameraUtils.back//CameraUtils.front
 
     var previewWidth  = 0
     var previewHeight = 0

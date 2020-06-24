@@ -25,7 +25,7 @@ object CameraUtils {
     @Synchronized
     fun open(facing: Int = front) : Camera? {
         try {
-            return Camera.open(facing)
+            return Camera.open(facing ) //
 
         } catch (e: Exception) {
             println("CameraUtils.openCamera() - ERROR \n $e")
