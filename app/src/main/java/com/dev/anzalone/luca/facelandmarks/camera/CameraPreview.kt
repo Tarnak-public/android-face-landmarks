@@ -32,11 +32,12 @@ import kotlin.math.absoluteValue
 class CameraPreview(context: Context, attrs: AttributeSet) : SurfaceView(context, attrs), SurfaceHolder.Callback {
     private var camera: Camera? = null //TODO: ADD PRIVATE
     private var running = false
-    private var facing  = CameraUtils.back//CameraUtils.front
+    private var facing  = CameraUtils.front //CameraUtils.back //
 
     var previewWidth  = 0
     var previewHeight = 0
-    var displayRotation = 0
+    private val displayRotationOverridden = 270 //use -1 to use rotation sensor
+    var displayRotation = 270
 
     var faceListener: Camera.FaceDetectionListener? = null
     var previewCallback: Camera.PreviewCallback? = null
@@ -141,6 +142,8 @@ class CameraPreview(context: Context, attrs: AttributeSet) : SurfaceView(context
                     Surface.ROTATION_270 -> 180 // landscape-right
                     else -> 90
                 }
+                if(displayRotationOverridden != -1)
+                    displayRotation = displayRotationOverridden
 
                 camera.setDisplayOrientation(displayRotation)
                 println("Rotation: display $displayRotation")

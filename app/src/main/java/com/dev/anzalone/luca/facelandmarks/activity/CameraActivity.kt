@@ -191,6 +191,7 @@ class CameraActivity : Activity(), Camera.PreviewCallback, Camera.FaceDetectionL
             launch(UI) {
                 cameraOverlay.setFaceAndLandmarks(face, landmarks)
                 cameraOverlay.invalidate()
+
             }
 
             currentFace = face
@@ -223,6 +224,9 @@ class CameraActivity : Activity(), Camera.PreviewCallback, Camera.FaceDetectionL
                 val h = cameraPreview.previewHeight
                 val rotation = cameraPreview.displayRotation
                 val rect = Rect(face).mapTo(w, h, rotation)
+
+                println(" cameraPreview.displayRotation : ${cameraPreview.displayRotation}")
+
 
                 //----  detect landmarks  ----//
                 // ..if no detections are running

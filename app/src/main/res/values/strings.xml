@@ -7,4 +7,5 @@
     <string name="nose_mouth">Nose mouth</string>
     <string name="fast_68_landmarks">Fast 68 Landmarks</string>
     <string name="dlib_68_landmarks">Dlib 68 Landmarks</string>
+    <string name="snapshot">snapshot</string>
 </resources>
