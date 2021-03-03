@@ -19,8 +19,7 @@ import java.net.URL
 class Downloader(activity: Activity, title: String = "Downloading file..",
                  val destination: File,
                  val onError: (File) -> Unit = {},
-                 val onSuccess: (File) -> Unit = {})
-{
+                 val onSuccess: (File) -> Unit = {}) {
     private val progressDialog: ProgressDialog = ProgressDialog(activity)
 
     init {
@@ -50,7 +49,7 @@ class Downloader(activity: Activity, title: String = "Downloading file..",
                 val reader = BufferedInputStream(url.openStream(), buffer_size)
                 val writer = FileOutputStream(destination)
 
-                val data  = ByteArray(buffer_size)
+                val data = ByteArray(buffer_size)
                 var count = reader.read(data)
                 var total = count
 
@@ -69,14 +68,23 @@ class Downloader(activity: Activity, title: String = "Downloading file..",
 
                 Log.d(tag, "File downloaded at ${destination.path}")
 
-                Looper.prepare()
+                try {
+                    Looper.prepare()
+                } catch (e: Exception) {
+
+                }
+
                 onSuccess(destination)
 
             } catch (e: Exception) {
                 Log.w(tag, "Error occurred! --> $e")
                 e.printStackTrace()
 
-                Looper.prepare()
+                try {
+                    Looper.prepare()
+                } catch (e: Exception) {
+
+                }
                 onError(destination)
             }
 

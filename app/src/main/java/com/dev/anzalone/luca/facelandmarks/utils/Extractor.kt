@@ -68,14 +68,22 @@ class Extractor(activity: Activity, val destination: File,
 
                 Log.d(tag, "File extacted at ${destination.path}")
 
-                Looper.prepare()
+                try {
+                    Looper.prepare()
+                } catch (e: Exception) {
+
+                }
                 onSuccess(destination)
 
             } catch (e: Exception) {
                 Log.w(tag, "Error occurred! --> $e")
                 e.printStackTrace()
 
-                Looper.prepare()
+                try {
+                    Looper.prepare()
+                } catch (e: Exception) {
+
+                }
                 onError(destination)
             }
 

@@ -20,12 +20,12 @@ android {
 
         externalNativeBuild {
             cmake {
-                cFlags   "-O3"
+                cFlags "-O3"
                 cppFlags "-std=c++11 -frtti -fexceptions"
                 arguments "-DANDROID_PLATFORM=android-16",
-                          "-DANDROID_TOOLCHAIN=clang",
-                          "-DANDROID_STL=c++_shared",
-                          "-DANDROID_CPP_FEATURES=rtti exceptions"
+                        "-DANDROID_TOOLCHAIN=clang",
+                        "-DANDROID_STL=c++_shared",
+                        "-DANDROID_CPP_FEATURES=rtti exceptions"
             }
         }
 
@@ -54,12 +54,22 @@ android {
 
     packagingOptions {
         pickFirst "**/libc++_shared.so"
+        pickFirst "lib/x86_64/libopencv_java4.so"
+        pickFirst "lib/armeabi-v7a/libdlib.so"
+        pickFirst "lib/armeabi-v7a/libopencv_java4.so"
+        pickFirst "lib/x86_64/libdlib.so"
+        pickFirst "lib/arm64-v8a/libdlib.so"
+        pickFirst "lib/x86/libopencv_java4.so"
+        pickFirst "lib/arm64-v8a/libopencv_java4.so"
+        pickFirst "lib/x86/libdlib.so"
+        //        pickFirst ""
     }
+
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:0.27.0-eap13'
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'org.apache.commons:commons-compress:1.16'

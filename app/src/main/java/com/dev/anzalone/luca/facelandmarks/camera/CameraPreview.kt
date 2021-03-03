@@ -7,7 +7,9 @@ import android.content.Context.WINDOW_SERVICE
 import android.graphics.*
 import android.hardware.Camera
 import android.media.MediaScannerConnection
+import android.os.Build
 import android.util.AttributeSet
+import android.util.Log
 import android.view.Surface
 import android.view.SurfaceHolder
 import android.view.SurfaceView
@@ -36,7 +38,7 @@ class CameraPreview(context: Context, attrs: AttributeSet) : SurfaceView(context
 
     var previewWidth  = 0
     var previewHeight = 0
-    private val displayRotationOverridden = 270 //use -1 to use rotation sensor
+    private var displayRotationOverridden = 270 //use -1 to use rotation sensor
     var displayRotation = 270
 
     var faceListener: Camera.FaceDetectionListener? = null
@@ -47,6 +49,11 @@ class CameraPreview(context: Context, attrs: AttributeSet) : SurfaceView(context
 //        holder.setFormat(ImageFormat.NV21)
         holder.setFormat(ImageFormat.JPEG)
 //        holder.setType(SurfaceHolder.SURFACE_TYPE_HARDWARE) // deprecated, thus ignored
+
+        if(Build.BOARD.equals("MSM8996",true))
+            displayRotationOverridden = -1
+
+        Log.v("testy", " board " + Build.BOARD)
     }
 
     private fun swapFacing() {

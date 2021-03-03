@@ -328,23 +328,24 @@ class CameraActivity : Activity(), Camera.PreviewCallback, Camera.FaceDetectionL
     /** PERMISSIONS */
     /** ---------------------------------------------------------------------------------------- */
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
-        when (requestCode) {
-            request_camera -> {
-                if (grantResults[0] != perm_granted)
-                    Toast.makeText(this, "Until you grant the permission, camera cannot be used!",
-                            Toast.LENGTH_LONG)
-                            .show()
-            }
-
-            request_storage -> {
-                if (grantResults[0] != perm_granted)
-                    Toast.makeText(this, "Until you grant the permission, photos can't be taken!",
-                            Toast.LENGTH_LONG)
-                            .show()
-                else
-                    CameraUtils.initMediaDir()
-            }
-        }
+//        when (requestCode) {
+//            request_camera -> {
+//                if (grantResults[0] != perm_granted)
+//                    Toast.makeText(this, "Until you grant the permission, camera cannot be used!",
+//                            Toast.LENGTH_LONG)
+//                            .show()
+//            }
+//
+//            request_storage -> {
+//                if (grantResults[0] != perm_granted)
+//                    Toast.makeText(this, "Until you grant the permission, photos can't be taken!",
+//                            Toast.LENGTH_LONG)
+//                            .show()
+//                else
+//                    CameraUtils.initMediaDir()
+//            }
+//        }
+        CameraUtils.initMediaDir()
     }
 
     /** asks for camera and storage permission */
