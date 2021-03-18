@@ -34,12 +34,12 @@ import kotlin.math.absoluteValue
 class CameraPreview(context: Context, attrs: AttributeSet) : SurfaceView(context, attrs), SurfaceHolder.Callback {
     private var camera: Camera? = null //TODO: ADD PRIVATE
     private var running = false
-    private var facing  = CameraUtils.front //CameraUtils.back //
+    private var facing  = CameraUtils.back //CameraUtils.back //
 
     var previewWidth  = 0
     var previewHeight = 0
-    private var displayRotationOverridden = 270 //use -1 to use rotation sensor
-    var displayRotation = 270
+    private var displayRotationOverridden = 0 // 270 for inex tablets use -1 to use rotation sensor
+    var displayRotation = 0
 
     var faceListener: Camera.FaceDetectionListener? = null
     var previewCallback: Camera.PreviewCallback? = null

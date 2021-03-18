@@ -52,6 +52,24 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    externalNativeBuild {
+        cmake {
+            path "CMakeLists.txt"
+        }
+    }
+
+    packagingOptions {
+        pickFirst "**/libc++_shared.so"
+        pickFirst "lib/x86_64/libopencv_java4.so"
+        pickFirst "lib/armeabi-v7a/libdlib.so"
+        pickFirst "lib/armeabi-v7a/libopencv_java4.so"
+        pickFirst "lib/x86_64/libdlib.so"
+        pickFirst "lib/arm64-v8a/libdlib.so"
+        pickFirst "lib/x86/libopencv_java4.so"
+        pickFirst "lib/arm64-v8a/libopencv_java4.so"
+        pickFirst "lib/x86/libdlib.so"
+        //        pickFirst ""
+    }
 
 }
 
