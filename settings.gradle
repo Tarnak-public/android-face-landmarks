@@ -1,1 +1,2 @@
+include ':dlib_opencv4'
 include ':app'
